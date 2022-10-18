@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import {
   Entity,
   Column,
@@ -9,7 +10,7 @@ import {
 @Entity("users")
 class User {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  readonly id: string;
 
   @Column({ length: 60 })
   name: string;
@@ -30,6 +31,7 @@ class User {
   updatedAt: Date;
 
   @Column({ length: 120 })
+  @Exclude()
   password: string;
 }
 

@@ -10,8 +10,5 @@ app.use(express.json());
 app.use("/users", userRoutes);
 app.use("/login", loginRoutes);
 app.use(handleErrorMiddleware);
-app.listen(3333, () => {
-  console.log("Server running");
-});
 
 export default app;

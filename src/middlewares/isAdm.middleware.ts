@@ -13,3 +13,16 @@ export const isAdmMW = async (
 
   return next();
 };
+export const isUpdtAdmMW = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  if (!req.user.isAdm) {
+    return res.status(401).json({
+      message: "User is not admin",
+    });
+  }
+
+  return next();
+};

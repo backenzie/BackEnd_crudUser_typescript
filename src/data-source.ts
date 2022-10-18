@@ -23,8 +23,4 @@ const AppDataSource = new DataSource(
       }
 );
 
-AppDataSource.initialize().then(() => {
-  console.log("Database connect");
-});
-
 export default AppDataSource;

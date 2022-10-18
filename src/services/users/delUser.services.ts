@@ -12,7 +12,9 @@ const deleteUserService = async (id: string): Promise<void> => {
   if (!user) {
     throw new AppError("User not found", 404);
   }
-
+  if (user.isActive === false) {
+    throw new AppError("User already inative", 400);
+  }
   await userRepository.update(id, {
     isActive: false,
   });

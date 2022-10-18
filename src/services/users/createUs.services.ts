@@ -11,7 +11,11 @@ export const createUsService = async ({
   password,
 }: IUserRequest): Promise<User> => {
   const userRep = AppDataSource.getRepository(User);
+  const emailExist = await userRep.findOneBy({ email });
 
+  if (emailExist) {
+    throw new AppError("Email Already exists", 400);
+  }
   if (!password) {
     throw new AppError("password is missing", 404);
   }
